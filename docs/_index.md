@@ -57,16 +57,59 @@ and vote for features!
   </div>
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title"><b>Quickstarts</b></h5>
-      <p class="card-text">A collection of tutorials with code samples to get you started quickly with Dapr.</p>
+      <h5 class="card-title"><b>Metrics</b></h5>
+      <p class="card-text">Find out how metrics are collected and which Azure services are supported.</p>
       <a href="}" class="stretched-link"></a>
     </div>
   </div>
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title"><b>Concepts</b></h5>
-      <p class="card-text">Learn about Dapr, including its main features and capabilities.</p>
+      <h5 class="card-title"><b>Deployment</b></h5>
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <a href="" class="stretched-link"></a>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><b>Configuration</b></h5>
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+      <a href="concepts" class="stretched-link"></a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><b>Security</b></h5>
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+      <a href="}" class="stretched-link"></a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><b>Operations</b></h5>
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a href="" class="stretched-link"></a>
+    </div>
+  </div>
+</div>
+
+### Further information
+
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><b>Walkthroughs</b></h5>
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a href="concepts" class="stretched-link"></a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><b>FAQ</b></h5>
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a href="}" class="stretched-link"></a>
     </div>
   </div>
 </div>
