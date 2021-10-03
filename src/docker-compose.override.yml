@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  promitor.agents.resourcediscovery:
+    environment:
+      - "ASPNETCORE_ENVIRONMENT=Development"
+      - "PROMITOR_CONFIG_FOLDER=/config/"
+      - "PROMITOR_AUTH_APPKEY=<hidden>"
+    ports:
+      - "777:88"
+  promitor.agents.scraper:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PROMITOR_CONFIG_FOLDER=/config/
+      - PROMITOR_AUTH_APPKEY=<hidden>
+      - PROMITOR_ATLASSIAN_STATUSPAGE_APIKEY=<hidden>
+      - SECRETS_STORAGEQUEUE_SAS=<hidden>
+    ports:
+      - "888:88"

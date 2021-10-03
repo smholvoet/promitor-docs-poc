@@ -1,0 +1,75 @@
+# Site Configuration
+baseURL = "https://promitor.io/"
+title = "Promitor"
+theme = "docsy"
+disableFastRender = true
+
+enableRobotsTXT = true
+enableGitInfo = true
+
+# Language Configuration
+languageCode = "en-us"
+
+# Disable categories & tags
+disableKinds = ["taxonomy", "term"]
+
+# Google Analytics
+[services.googleAnalytics]
+id = "UA-117259584-1"
+
+# Mounts
+[module]
+  [[module.mounts]]
+    source = "docs"
+    target = "content"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "data"
+    target = "data"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "archetypes"
+    target = "archetypes"
+
+# Markdown Engine - Allow inline html
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+
+[params]
+copyright = "Promitor"
+
+# Algolia
+algolia_docsearch = true
+offlineSearch = false
+
+# GitHub Information
+github_repo = "https://github.com/tomkerkhove/promitor"
+github_project_repo = "https://github.com/tomkerkhove/promitor"
+github_subdir = "docs"
+github_branch = "master"
+
+# UI Customization
+[params.ui]
+sidebar_menu_compact = true
+navbar_logo = true
+sidebar_search_disable = true
+
+[[params.links.user]]
+	name ="Twitter"
+	url = "https://twitter.com/promitorio"
+	icon = "fab fa-twitter"
+  desc = "Follow us on Twitter to get the latest updates!"
+[[params.links.user]]
+	name = "GitHub"
+	url = "https://github.com/tomkerkhove/promitor"
+	icon = "fab fa-github"

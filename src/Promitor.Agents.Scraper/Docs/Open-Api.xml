@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Promitor.Agents.Scraper</name>
+    </assembly>
+    <members>
+        <member name="M:Promitor.Agents.Scraper.AzureMonitorClientFactory.CreateIfNotExists(Microsoft.Azure.Management.ResourceManager.Fluent.AzureEnvironment,System.String,System.String,Promitor.Core.Metrics.Sinks.MetricSinkWriter,Promitor.Core.Metrics.IRuntimeMetricsCollector,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Options.IOptions{Promitor.Integrations.AzureMonitor.Configuration.AzureMonitorLoggingConfiguration},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Provides an Azure Monitor client
+            </summary>
+            <param name="cloud">Name of the Azure cloud to interact with</param>
+            <param name="tenantId">Id of the tenant that owns the Azure subscription</param>
+            <param name="subscriptionId">Id of the Azure subscription</param>
+            <param name="metricSinkWriter">Writer to send metrics to all configured sinks</param>
+            <param name="metricsCollector">Metrics collector to write metrics to Prometheus</param>
+            <param name="configuration">Configuration of Promitor</param>
+            <param name="azureMonitorLoggingConfiguration">Options for Azure Monitor logging</param>
+            <param name="loggerFactory">Factory to create loggers with</param>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Controllers.v1.ConfigurationController.GetMetricDeclaration">
+            <summary>
+                Get Metrics Declaration
+            </summary>
+            <remarks>Provides a list of all configured metrics to scrape</remarks>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Controllers.v1.ConfigurationController.GetRuntime">
+            <summary>
+                Get Runtime Configuration
+            </summary>
+            <remarks>Provides the runtime configuration</remarks>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Controllers.v1.HealthController.Get(System.Boolean)">
+            <summary>
+                Get Health
+            </summary>
+            <remarks>Provides an indication about the health of the API.</remarks>
+            <param name="includeDependencies">
+                Indication whether or not dependencies integration should be verified.
+                Do note that this will contact all dependencies which can have performance impact or cascading failures when
+                consumed very often.
+            </param>
+            <response code="200">API is healthy</response>
+            <response code="503">API is unhealthy or in degraded state</response>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Controllers.v1.SystemController.Get">
+            <summary>
+                Get System Info
+            </summary>
+            <remarks>Provides information concerning the Promitor Scraper Agent</remarks>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Extensions.IApplicationBuilderExtensions.UseMetricSinks(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Promitor.Agents.Scraper.Startup})">
+            <summary>
+                Adds the required metric sinks
+            </summary>
+            <param name="app">Application Builder</param>
+            <param name="configuration">Configuration of the scraper agent</param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Extensions.ObjectExtensions.Clone``1(``0)">
+            <summary>
+                Clones an object without a reference, the ugly way.
+            </summary>
+            <typeparam name="TObject">Type of the object to be cloned</typeparam>
+            <param name="initialObject">Initial object to clone</param>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Usability.MetricsTableGenerator.PlotOverviewInAsciiTable">
+            <summary>
+                Plots all configured metric information into an ASCII table
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Validation.MetricDefinitions.Interfaces.IMetricValidator.Validate(Promitor.Core.Scraping.Configuration.Model.Metrics.MetricDefinition)">
+            <summary>
+                Validates a specific metric definition
+            </summary>
+            <param name="metricDefinition">Metric definition to validate</param>
+            <returns>List of validation errors</returns>
+        </member>
+        <member name="T:Promitor.Agents.Scraper.Validation.MetricDefinitions.ResourceTypes.SqlDatabaseMetricValidator">
+            <summary>
+            Validates <see cref="T:Promitor.Core.Contracts.ResourceTypes.SqlDatabaseResourceDefinition" /> objects.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Validation.MetricDefinitions.ResourceTypes.SqlDatabaseMetricValidator.Validate(Promitor.Core.Scraping.Configuration.Model.Metrics.MetricDefinition)">
+            <inheritdoc />
+        </member>
+        <member name="T:Promitor.Agents.Scraper.Validation.MetricDefinitions.ResourceTypes.SqlElasticPoolMetricValidator">
+            <summary>
+            Validates <see cref="T:Promitor.Agents.Scraper.Validation.MetricDefinitions.ResourceTypes.SqlElasticPoolMetricValidator" /> objects.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Validation.MetricDefinitions.ResourceTypes.SqlElasticPoolMetricValidator.Validate(Promitor.Core.Scraping.Configuration.Model.Metrics.MetricDefinition)">
+            <inheritdoc />
+        </member>
+        <member name="T:Promitor.Agents.Scraper.Validation.MetricDefinitions.ResourceTypes.SqlManagedInstanceMetricValidator">
+            <summary>
+            Validates <see cref="T:Promitor.Agents.Scraper.Validation.MetricDefinitions.ResourceTypes.SqlManagedInstanceMetricValidator" /> objects.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.Scraper.Validation.MetricDefinitions.ResourceTypes.SqlManagedInstanceMetricValidator.Validate(Promitor.Core.Scraping.Configuration.Model.Metrics.MetricDefinition)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.IHealthChecksBuilderExtensions.AddResourceDiscoveryHealthCheck(Microsoft.Extensions.DependencyInjection.IHealthChecksBuilder,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Add health check for integration with Promitor Resource Discovery
+            </summary>
+            <param name="healthChecksBuilder">Builder for adding health checks</param>
+            <param name="configuration">Configuration of Promitor</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.IServiceCollectionExtensions.AddResourceDiscoveryClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+                Add the Promitor Resource Discovery client
+            </summary>
+            <param name="services">Collections of services in application</param>
+            <param name="promitorUserAgent">User agent for Promitor</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.IServiceCollectionExtensions.AddAtlassianStatuspageClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Add the Atlassian Statuspage client
+            </summary>
+            <param name="services">Collections of services in application</param>
+            <param name="promitorUserAgent">User agent for Promitor</param>
+            <param name="configuration">Configuration of the agent</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.IServiceCollectionExtensions.DefineDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Defines the dependencies that Promitor requires
+            </summary>
+            <param name="services">Collections of services in application</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.IServiceCollectionExtensions.AddUsability(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Adds usability
+            </summary>
+            <param name="services">Collections of services in application</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.IServiceCollectionExtensions.AddValidationRules(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Defines the validation for when Promitor starts up
+            </summary>
+            <param name="services">Collections of services in application</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.IServiceCollectionExtensions.UseMetricSinks(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Adds the required metric sinks
+            </summary>
+            <param name="services">Collections of services in application</param>
+            <param name="configuration">Configuration of the application</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.IServiceCollectionExtensions.ConfigureYamlConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Inject configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.SchedulingExtensions.ScheduleMetricScraping(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Defines to use the cron scheduler
+            </summary>
+            <param name="services">Collections of services in application</param>
+        </member>
+    </members>
+</doc>

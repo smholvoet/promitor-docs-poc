@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RuntimeFrameworkVersion>3.1.16</RuntimeFrameworkVersion>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Validation\Metrics\**" />
+    <Compile Remove="Validation\Misc\**" />
+    <EmbeddedResource Remove="Validation\Metrics\**" />
+    <EmbeddedResource Remove="Validation\Misc\**" />
+    <None Remove="Validation\Metrics\**" />
+    <None Remove="Validation\Misc\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Files\valid-sample.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Files\valid-sample.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Bogus" Version="33.0.2" />
+    <PackageReference Include="Fastenshtein" Version="1.0.0.7" />
+    <PackageReference Include="JetBrains.DotMemoryUnit" Version="3.1.20200127.214830" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Promitor.Agents.ResourceDiscovery\Promitor.Agents.ResourceDiscovery.csproj" />
+    <ProjectReference Include="..\Promitor.Core.Scraping\Promitor.Core.Scraping.csproj" />
+    <ProjectReference Include="..\Promitor.Agents.Scraper\Promitor.Agents.Scraper.csproj" />
+    <ProjectReference Include="..\Promitor.Integrations.Sinks.Statsd\Promitor.Integrations.Sinks.Statsd.csproj" />
+  </ItemGroup>
+
+</Project>

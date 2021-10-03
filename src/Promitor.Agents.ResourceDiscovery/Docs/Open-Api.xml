@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Promitor.Agents.ResourceDiscovery</name>
+    </assembly>
+    <members>
+        <member name="T:Promitor.Agents.ResourceDiscovery.Controllers.DiscoveryController">
+            <summary>
+            API endpoint to discover Azure resources
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Controllers.DiscoveryController.#ctor(Promitor.Agents.ResourceDiscovery.Repositories.Interfaces.IAzureResourceRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Promitor.Agents.ResourceDiscovery.Controllers.DiscoveryController"/> class.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Controllers.DiscoveryController.Get(System.String)">
+            <summary>
+                Discover Resources
+            </summary>
+            <remarks>Discovers Azure resources matching the criteria.</remarks>
+        </member>
+        <member name="T:Promitor.Agents.ResourceDiscovery.Controllers.HealthController">
+            <summary>
+            API endpoint to check the health of the application.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Controllers.HealthController.#ctor(Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Promitor.Agents.ResourceDiscovery.Controllers.HealthController"/> class.
+            </summary>
+            <param name="healthCheckService">The service to provide the health of the API application.</param>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Controllers.HealthController.Get(System.Boolean)">
+            <summary>
+                Get Health
+            </summary>
+            <remarks>Provides an indication about the health of the API.</remarks>
+            <param name="includeDependencies">
+                Indication whether or not dependencies integration should be verified.
+                Do note that this will contact all dependencies which can have performance impact or cascading failures when
+                consumed very often.
+            </param>
+            <response code="200">API is healthy</response>
+            <response code="503">API is unhealthy or in degraded state</response>
+        </member>
+        <member name="T:Promitor.Agents.ResourceDiscovery.Controllers.ResourceDiscoveryGroupsController">
+            <summary>
+            API endpoint to interact with resource discovery groups
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Controllers.ResourceDiscoveryGroupsController.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Promitor.Agents.ResourceDiscovery.Configuration.ResourceDeclaration})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Promitor.Agents.ResourceDiscovery.Controllers.ResourceDiscoveryGroupsController" /> class.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Controllers.ResourceDiscoveryGroupsController.Get">
+            <summary>
+                Get Resource Discovery Groups
+            </summary>
+            <remarks>Lists all available resource discovery groups.</remarks>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Controllers.SystemController.Get">
+            <summary>
+                Get System Info
+            </summary>
+            <remarks>Provides information concerning the Promitor Resource Discovery Agent</remarks>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Extensions.IServiceCollectionExtensions.AddRuntimeConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Inject configuration
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Extensions.IServiceCollectionExtensions.AddBackgroundJobs(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Inject configuration
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Extensions.IServiceCollectionExtensions.AddAzureResourceGraph(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Add Azure Resource Graph integration
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Extensions.IServiceCollectionExtensions.AddValidationRules(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Add validation rules
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Extensions.IServiceCollectionExtensions.AddUsability(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Add usability
+            </summary>
+        </member>
+        <member name="P:Promitor.Agents.ResourceDiscovery.Graph.AzureResourceGraph.QueryIdentityId">
+            <summary>
+            The identity id that is used to run queries
+            </summary>
+        </member>
+        <member name="P:Promitor.Agents.ResourceDiscovery.Graph.Exceptions.ParseException.QueryResponse">
+            <summary>
+                Response provided by Azure Resource Graph after running a query
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Graph.Exceptions.ParseException.#ctor(Microsoft.Azure.Management.ResourceGraph.Models.QueryResponse)">
+            <summary>
+                Constructor
+            </summary>
+            <param name="queryResponse">Response provided by Azure Resource Graph after running a query</param>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Graph.ResourceDiscoveryQuery.GetParentResourceNameFromResourceUri(System.String,Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Gets the name of the parent resource from a resource URI
+            </summary>
+            <param name="resourceIdentifier">Identifier to split on, ie servers/ for Azure SQL DB to get the server name</param>
+            <param name="resourceUri">Uri of the child resource</param>
+            <returns>Name of the parent resource</returns>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Repositories.AzureResourceRepository.#ctor(Promitor.Agents.ResourceDiscovery.Graph.Interfaces.IAzureResourceGraph,Microsoft.Extensions.Options.IOptionsMonitor{Promitor.Agents.ResourceDiscovery.Configuration.ResourceDeclaration},Microsoft.Extensions.Logging.ILogger{Promitor.Agents.ResourceDiscovery.Repositories.AzureResourceRepository})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Promitor.Agents.ResourceDiscovery.Controllers.DiscoveryController" /> class.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Repositories.AzureResourceRepository.GetResourcesAsync(System.String)">
+            <summary>
+                Get resources that are part of a given resource collection
+            </summary>
+            <param name="resourceDiscoveryGroupName">Name of the resource collection</param>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Repositories.CachedAzureResourceRepository.#ctor(Promitor.Agents.ResourceDiscovery.Repositories.AzureResourceRepository,Microsoft.Extensions.Caching.Memory.IMemoryCache,Microsoft.Extensions.Options.IOptionsMonitor{Promitor.Agents.ResourceDiscovery.Configuration.CacheConfiguration})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Promitor.Agents.ResourceDiscovery.Controllers.DiscoveryController" /> class.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Promitor.Agents.ResourceDiscovery.Startup" /> class.
+            </summary>
+        </member>
+        <member name="M:Promitor.Agents.ResourceDiscovery.Usability.DiscoveryGroupTableGenerator.PlotOverviewInAsciiTable">
+            <summary>
+                Plots all configured information into an ASCII table
+            </summary>
+        </member>
+    </members>
+</doc>

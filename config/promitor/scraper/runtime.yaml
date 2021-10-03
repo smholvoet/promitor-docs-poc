@@ -1,0 +1,37 @@
+server:
+  httpPort: 88
+authentication:
+  mode: ServicePrincipal
+  identityId: ceb249a3-44ce-4c90-8863-6776336f5b7e
+metricSinks:
+  prometheusScrapingEndpoint:
+    metricUnavailableValue: -1
+    enableMetricTimestamps: true # true by default
+    baseUriPath: /scrape
+  statsd:
+    host: graphite
+    port: 8125
+    metricPrefix: promitor.
+  atlassianStatuspage:
+    pageId: y79z9b78ybgs
+    systemMetricMapping:
+    - id: nfkgnrwpn545
+      promitorMetricName: promitor_demo_appplan_autoscale_observed_capacity
+metricsConfiguration:
+  absolutePath: /config/metrics-declaration.yaml
+telemetry:
+  applicationInsights:
+    instrumentationKey: ABC
+    isEnabled: false
+    verbosity: warning
+  containerLogs:
+    isEnabled: true
+    verbosity: information
+  defaultVerbosity: information
+azureMonitor:
+  logging:
+    informationLevel: Headers
+    isEnabled: false
+resourceDiscovery:
+  host: promitor.agents.resourcediscovery
+  port: 88
